@@ -1,0 +1,34 @@
+<resources>
+    <string-array name="roleList">
+        <item>Kierowcą</item>
+        <item>Warsztatem Samochodowym</item>
+    </string-array>
+
+    <string-array name="cityList">
+        <item>Lublin</item>
+        <item>Warszawa</item>
+    </string-array>
+
+    <string-array name="carList">
+        <item>Audi A5</item>
+        <item>BMW X6</item>
+    </string-array>
+    <string name="app_name">RepairCarAuction</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="add_offer_page">Add Offer Page</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <string name="szukasz">Szukasz</string>
+    <string name="pomocy_czy_klienty">Pomocy czy Klienty?</string>
+    <string name="email">Email</string>
+    <string name="has_o">Hasło</string>
+    <string name="zaloguj_si">Zaloguj się</string>
+    <string name="utworz_konto">Utworz konto</string>
+</resources>
