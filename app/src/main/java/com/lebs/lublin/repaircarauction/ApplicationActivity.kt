@@ -1,5 +1,6 @@
 package com.lebs.lublin.repaircarauction
 
+import android.app.Fragment
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -21,14 +22,7 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->
-            val manager = fragmentManager;
-            var transaction = manager.beginTransaction();
-            val fragment = AddOffer();
-            transaction.replace(R.id.main_content, fragment).commit();
-            supportActionBar?.title = "Dodaj ogłoszenie"
-            fab.hide()
-//            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                    .setAction("Action", null).show()
+            changeFragment(AddOffer(), AddOffer.actionBarTitle)
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -37,28 +31,8 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
-        setDefaultFragment()
 
-        val navView = findViewById<View>(R.id.nav_view) as NavigationView
-
-        val user: User = intent.getParcelableExtra("user")
-
-        val menu = navView.menu
-        if(user.isDriver()) {
-            menu.setGroupVisible(R.id.driverMenu, true)
-        }else {
-            menu.setGroupVisible(R.id.ctoMenu, true)
-        }
-
-        navView.invalidate()
-    }
-
-    private fun setDefaultFragment() {
-        val manager = fragmentManager;
-        var transaction = manager.beginTransaction();
-        val fragment = OfferListFragment();
-        transaction.replace(R.id.main_content, fragment).commit();
-        supportActionBar?.title = "Moje Ogłoszenia"
+        initializeMenu()
     }
 
     override fun onBackPressed() {
@@ -87,18 +61,36 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
-        val manager = fragmentManager;
-        var transaction = manager.beginTransaction();
         when (item.itemId) {
             R.id.driverAuction -> {
-                val fragment = OfferListFragment();
-                transaction.replace(R.id.main_content, fragment).commit();
-                supportActionBar?.title = "Dodaj ogłoszenie"
-                fab.show()
+                changeFragment(OfferListFragment(), OfferListFragment.actionBarTitle)
             }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
         return true
+    }
+
+    fun changeFragment(fragment: Fragment, actionBarTitle: String) {
+        var transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.main_content, fragment).commit();
+        supportActionBar?.title = actionBarTitle
+
+        if (fragment is OfferListFragment) {
+            fab.show()
+        } else {
+            fab.hide()
+        }
+    }
+
+    private fun initializeMenu() {
+        val user: User = intent.getParcelableExtra("user")
+        if (user.isDriver()) {
+            nav_view.menu.setGroupVisible(R.id.driverMenu, true)
+        } else {
+            nav_view.menu.setGroupVisible(R.id.ctoMenu, true)
+        }
+
+        nav_view.invalidate()
     }
 }

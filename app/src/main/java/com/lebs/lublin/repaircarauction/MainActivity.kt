@@ -6,7 +6,7 @@ import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.view.View
 import android.widget.TextView
-import com.lebs.lublin.repaircarauction.db.DbHelper
+import com.lebs.lublin.repaircarauction.heplers.SnackBarHelper
 import com.lebs.lublin.repaircarauction.models.User
 import kotlinx.android.synthetic.main.activity_login.*
 
@@ -23,19 +23,25 @@ class MainActivity : AppCompatActivity() {
         })
 
         logIn.setOnClickListener { view ->
-            val login = username.text.toString()
-            val pass = passwordLogIn.text.toString()
-            if (login == "user@user.com" && pass == "1234") {
-                val intent = Intent(this, ApplicationActivity::class.java)
-                intent.putExtra("user", User("user","1234", "Warsaw","Kierowca"))
-                startActivity(intent)
+            if (validCredentials()) {
+                goToApplicationActivity()
             } else {
-                val snackBar = Snackbar.make(view, "Niepoprawny email albo hasło", Snackbar.LENGTH_LONG)
-                val textView = snackBar.view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
-                snackBar.view.setBackgroundColor(resources.getColor(R.color.colorError))
-                textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
-                snackBar.show()
+                SnackBarHelper.showError("Niepoprawny email lub hasło", view, this)
             }
         }
     }
+
+    private fun validCredentials(): Boolean {
+        val login = usernameLogin.text.toString()
+        val pass = passwordLogIn.text.toString()
+
+        return login == "user@user.com" && pass == "1234"
+    }
+
+    private fun goToApplicationActivity() {
+        val intent = Intent(this, ApplicationActivity::class.java)
+        intent.putExtra("user", User("user", "1234", "Warsaw", "Kierowca"))
+        startActivity(intent)
+    }
+
 }

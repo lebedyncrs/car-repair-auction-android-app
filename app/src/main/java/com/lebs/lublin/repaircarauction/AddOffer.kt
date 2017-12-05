@@ -6,14 +6,40 @@ import android.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.lebs.lublin.repaircarauction.models.Offer
+import kotlinx.android.synthetic.main.fragment_add_offer.*
+import kotlinx.android.synthetic.main.fragment_add_offer.view.*
 
 class AddOffer : Fragment() {
-
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.fragment_add_offer, container, false)
+        val view = inflater!!.inflate(R.layout.fragment_add_offer, container, false)
+
+        view.addOfferButton.setOnClickListener {
+            val bundle = Bundle()
+            bundle.putSerializable("data", getOffer())
+            val fragment = OfferListFragment()
+            fragment.arguments = bundle
+            (activity as ApplicationActivity).changeFragment(fragment, OfferListFragment.actionBarTitle)
+        }
+        return view
     }
 
-}// Required empty public constructor
+    companion object {
+        val actionBarTitle = "Dodaj ogłoszenie"
+    }
+
+
+    fun getOffer(): Offer {
+        return Offer(
+                1,
+                addOfferCarSpinner.selectedItem.toString(),
+                addOfferDescription.text.toString(),
+                addOfferTowTruck.isChecked,
+                addOfferCitySpinner.selectedItem.toString(),
+                addOfferCarSpinner.selectedItem.toString()
+        )
+    }
+}
