@@ -7,6 +7,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="88dp"
+        android:layout_marginLeft="5dp"
         android:paddingBottom="2dp"
         android:paddingTop="2dp">
 
@@ -21,22 +22,50 @@
 
         <TextView
             android:id="@+id/offer_title"
-            android:layout_width="wrap_content"
+            android:layout_width="160dp"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="12dp"
             android:layout_toEndOf="@+id/offer_logo"
-            android:text="Instalacja LPG" />
+            android:text="Instalacja LPG"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/offer_title"
+            app:srcCompat="@mipmap/clock_icon" />
 
         <TextView
-            android:id="@+id/offer_description"
+            android:id="@+id/daysTerm"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/offer_title"
-            android:layout_below="@+id/offer_title"
-            android:layout_marginTop="16dp"
-            android:text="Some description of that offer"
-            android:textSize="10sp" />
+            android:layout_alignBottom="@+id/moneyBudget"
+            android:layout_alignTop="@+id/moneyBudget"
+            android:layout_marginLeft="2dp"
+            android:layout_toEndOf="@+id/imageView2"
+            android:gravity="center_vertical"
+            android:text="8 days" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/daysTerm"
+            app:srcCompat="@mipmap/money_icon_foreground" />
+
+        <TextView
+            android:id="@+id/moneyBudget"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@+id/imageView3"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/imageView3"
+            android:gravity="center_vertical"
+            android:text="5000" />
     </RelativeLayout>
 </LinearLayout>

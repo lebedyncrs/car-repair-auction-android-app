@@ -23,11 +23,14 @@ class OfferListFragment : Fragment() {
         val listView: ListView = view.findViewById<ListView>(R.id.offer_list_view)
 
         var offers = listOf<Offer>(
-                Offer(1, "Audi A6", "Zmienić opony na zimowe", true, "Warsaw", "Audi A6"),
-                Offer(2, "BMW X5", "Wymiana Masła", true, "Warsaw", "BMW X5"),
-                Offer(3, "Ford Mustang", "Zainstalować LPG", true, "Warsaw", "Ford Mustang"),
-                arguments.getSerializable("data") as Offer
+                Offer(1, "Zmienić opony na zimowe", "Zmienić opony na zimowe", true, "Warsaw", "Audi A6",1,250),
+                Offer(2, "Wymiana Masła", "Wymiana Masła", true, "Warsaw", "BMW X5",1, 45),
+                Offer(3, "Zainstalować LPG", "Zainstalować LPG", true, "Warsaw", "Ford Mustang",3, 2500)
         )
+
+        if(arguments != null) {
+            offers = offers.plus(arguments.getSerializable("data") as Offer)
+        }
 
         val adapter = Adapter(offers, activity)
         listView.adapter = adapter
@@ -57,7 +60,8 @@ class OfferListFragment : Fragment() {
             val row = RowHolder(view)
 
             row.title.text = list[p0].name
-            row.description.text = list[p0].description
+            row.daysTerm.text = list[p0].daysTerm.toString()
+            row.moneyBudget.text = list[p0].moneyBudget.toString()
 
             view.tag = row
 
@@ -71,7 +75,8 @@ class OfferListFragment : Fragment() {
         inner class RowHolder(view: View) {
             val logo = view.findViewById<ImageView>(R.id.offer_logo);
             val title = view.findViewById<TextView>(R.id.offer_title);
-            val description = view.findViewById<TextView>(R.id.offer_description);
+            val daysTerm = view.findViewById<TextView>(R.id.daysTerm);
+            val moneyBudget = view.findViewById<TextView>(R.id.moneyBudget);
         }
     }
 

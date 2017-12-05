@@ -35,11 +35,13 @@ class AddOffer : Fragment() {
     fun getOffer(): Offer {
         return Offer(
                 1,
-                addOfferCarSpinner.selectedItem.toString(),
+                addOfferName.text.toString(),
                 addOfferDescription.text.toString(),
                 addOfferTowTruck.isChecked,
                 addOfferCitySpinner.selectedItem.toString(),
-                addOfferCarSpinner.selectedItem.toString()
+                addOfferCarSpinner.selectedItem.toString(),
+                Integer.parseInt(addOfferDays.text.toString()),
+                Integer.parseInt(moneyBudget.text.toString())
         )
     }
 }

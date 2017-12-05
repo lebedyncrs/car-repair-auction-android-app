@@ -13,6 +13,8 @@ import android.view.View
 import com.lebs.lublin.repaircarauction.models.User
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.nav_header_main.*
+import kotlinx.android.synthetic.main.nav_header_main.view.*
 
 class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -20,6 +22,7 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+        changeFragment(OfferListFragment(), AddOffer.actionBarTitle)
 
         fab.setOnClickListener { view ->
             changeFragment(AddOffer(), AddOffer.actionBarTitle)
@@ -43,21 +46,21 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         }
     }
 
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        menuInflater.inflate(R.menu.main, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        when (item.itemId) {
-            R.id.action_settings -> return true
-            else -> return super.onOptionsItemSelected(item)
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        menuInflater.inflate(R.menu.main, menu)
+//        return true
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        when (item.itemId) {
+//            R.id.action_settings -> return true
+//            else -> return super.onOptionsItemSelected(item)
+//        }
+//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
