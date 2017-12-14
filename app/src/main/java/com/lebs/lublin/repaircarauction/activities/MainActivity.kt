@@ -1,11 +1,10 @@
-package com.lebs.lublin.repaircarauction
+package com.lebs.lublin.repaircarauction.activities
 
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.support.design.widget.Snackbar
 import android.view.View
-import android.widget.TextView
+import com.lebs.lublin.repaircarauction.R
 import com.lebs.lublin.repaircarauction.heplers.SnackBarHelper
 import com.lebs.lublin.repaircarauction.models.User
 import kotlinx.android.synthetic.main.activity_login.*

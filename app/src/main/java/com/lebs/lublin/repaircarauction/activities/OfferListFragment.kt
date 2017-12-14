@@ -1,19 +1,15 @@
-package com.lebs.lublin.repaircarauction
+package com.lebs.lublin.repaircarauction.activities
 
 import android.os.Bundle
 import android.app.Fragment
 import android.content.Context
-import android.os.Parcel
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import com.lebs.lublin.repaircarauction.R
+import com.lebs.lublin.repaircarauction.activities.adapters.OfferListFragmentListViewAdapter
 import com.lebs.lublin.repaircarauction.models.Offer
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.fragment_add_offer.*
-import kotlinx.android.synthetic.main.fragment_offer_list.*
-import java.io.Serializable
 
 class OfferListFragment : Fragment() {
 
@@ -32,7 +28,7 @@ class OfferListFragment : Fragment() {
             offers = offers.plus(arguments.getSerializable("data") as Offer)
         }
 
-        val adapter = Adapter(offers, activity)
+        val adapter = OfferListFragmentListViewAdapter(offers, activity)
         listView.adapter = adapter
 
         listView.setOnItemClickListener(object : AdapterView.OnItemClickListener {
@@ -49,35 +45,6 @@ class OfferListFragment : Fragment() {
         })
 
         return view
-    }
-
-    inner class Adapter(data: List<Offer>, inflater: Context) : BaseAdapter() {
-        val list = data;
-        val context = inflater;
-
-        override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-            val view: View = View.inflate(context, R.layout.offer_list_listview, null)
-            val row = RowHolder(view)
-
-            row.title.text = list[p0].name
-            row.daysTerm.text = list[p0].daysTerm.toString()
-            row.moneyBudget.text = list[p0].moneyBudget.toString()
-
-            view.tag = row
-
-            return view
-        }
-
-        override fun getItem(p0: Int): Any = list[p0]
-        override fun getItemId(p0: Int): Long = p0.toLong()
-        override fun getCount(): Int = list.count();
-
-        inner class RowHolder(view: View) {
-            val logo = view.findViewById<ImageView>(R.id.offer_logo);
-            val title = view.findViewById<TextView>(R.id.offer_title);
-            val daysTerm = view.findViewById<TextView>(R.id.daysTerm);
-            val moneyBudget = view.findViewById<TextView>(R.id.moneyBudget);
-        }
     }
 
     companion object {

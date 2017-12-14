@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.lebs.lublin.repaircarauction.MainActivity">
+    tools:context="com.lebs.lublin.repaircarauction.activities.MainActivity">
 
     <ListView
         android:id="@+id/offer_list_view"

@@ -4,7 +4,7 @@
     android:id="@+id/add_offer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.lebs.lublin.repaircarauction.AddOffer"
+    tools:context="com.lebs.lublin.repaircarauction.activities.AddOffer"
     tools:layout_editor_absoluteY="25dp">
 
     <!-- TODO: Update blank fragment layout -->

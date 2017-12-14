@@ -1,4 +1,4 @@
-package com.lebs.lublin.repaircarauction.db
+package com.lebs.lublin.repaircarauction.heplers
 
 import android.content.ContentValues
 import android.content.Context
