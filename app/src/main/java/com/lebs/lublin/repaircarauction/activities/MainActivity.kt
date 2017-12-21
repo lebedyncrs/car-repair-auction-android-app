@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         })
-        goToApplicationActivity()
+
         logIn.setOnClickListener { view ->
             if (validCredentials()) {
                 goToApplicationActivity()
