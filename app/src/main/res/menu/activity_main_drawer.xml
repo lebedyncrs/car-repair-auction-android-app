@@ -14,7 +14,12 @@
         <item
             android:id="@+id/driverCars"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Mój Samocjód" />
+            android:title="Mój Samocjód"
+            android:visible="false" />
+        <item
+            android:id="@+id/addDriverCar"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Dodać Samocjód" />
         <item
             android:id="@+id/driverMessages"
             android:icon="@drawable/ic_menu_slideshow"
@@ -22,7 +27,7 @@
         <item
             android:id="@+id/driverAuction"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Aukcja" />
+            android:title="Aukcje" />
     </group>
 
     <group
@@ -30,16 +35,16 @@
         android:checkableBehavior="single"
         android:visible="false">
         <item
+            android:id="@+id/ctoAuctionWin"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Wygrane Aukcje" />
+        <item
             android:id="@+id/ctoAccount"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Moje warsztat" />
-        <item
-            android:id="@+id/ctoMessages"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Wiadomości" />
+            android:title="Mój warsztat" />
         <item
             android:id="@+id/ctoAuction"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Aukcja" />
+            android:title="Aukcje" />
     </group>
 </menu>

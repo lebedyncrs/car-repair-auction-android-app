@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import com.lebs.lublin.repaircarauction.R
+import com.lebs.lublin.repaircarauction.activities.fragments.*
 import com.lebs.lublin.repaircarauction.models.User
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -18,7 +19,13 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        changeFragment(OfferListFragment(), AddOffer.actionBarTitle)
+
+        val user: User = intent.getParcelableExtra("user")
+        if (user.isDriver()) {
+            changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle)
+        } else {
+            changeFragment(OfferListFragment(), OfferListFragment.actionBarTitle)
+        }
 
         fab.setOnClickListener {
             changeFragment(AddOffer(), AddOffer.actionBarTitle)
@@ -64,6 +71,15 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
             R.id.driverAuction -> {
                 changeFragment(OfferListFragment(), OfferListFragment.actionBarTitle)
             }
+            R.id.addDriverCar -> {
+                changeFragment(AddCarFragment(), AddCarFragment.actionBarTitle)
+            }
+            R.id.driverCars -> {
+                changeFragment(MyCarFragment(), MyCarFragment.actionBarTitle)
+            }
+            R.id.ctoAuction -> {
+                changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle)
+            }
         }
 
         drawer_layout.closeDrawer(GravityCompat.START)
@@ -85,9 +101,9 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
     private fun initializeMenu() {
         val user: User = intent.getParcelableExtra("user")
         if (user.isDriver()) {
-            nav_view.menu.setGroupVisible(R.id.driverMenu, true)
-        } else {
             nav_view.menu.setGroupVisible(R.id.ctoMenu, true)
+        } else {
+            nav_view.menu.setGroupVisible(R.id.driverMenu, true)
         }
 
         nav_view.invalidate()

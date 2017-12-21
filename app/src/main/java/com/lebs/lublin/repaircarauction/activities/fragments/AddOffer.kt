@@ -1,13 +1,13 @@
-package com.lebs.lublin.repaircarauction.activities
+package com.lebs.lublin.repaircarauction.activities.fragments
 
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.lebs.lublin.repaircarauction.R
+import com.lebs.lublin.repaircarauction.activities.ApplicationActivity
 import com.lebs.lublin.repaircarauction.activities.forms.AddOfferForm
 import com.lebs.lublin.repaircarauction.models.Offer
 import kotlinx.android.synthetic.main.fragment_add_offer.*
@@ -47,7 +47,8 @@ class AddOffer : Fragment() {
                 addOfferCitySpinner.selectedItem.toString(),
                 addOfferCarSpinner.selectedItem.toString(),
                 Integer.parseInt(addOfferDays.text.toString()),
-                Integer.parseInt(moneyBudget.text.toString())
+                Integer.parseInt(moneyBudget.text.toString()),
+                "Janusz"
         )
     }
 }

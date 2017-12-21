@@ -9,17 +9,17 @@ import android.widget.TextView
 import com.lebs.lublin.repaircarauction.R
 import com.lebs.lublin.repaircarauction.models.Offer
 
-class OfferListFragmentListViewAdapter(data: List<Offer>, inflater: Context) : BaseAdapter() {
+class CtoOfferListFragmentListViewAdapter(data: List<Offer>, inflater: Context) : BaseAdapter() {
     val list = data;
     val context = inflater;
 
     override fun getView(p0: Int, p1: View?, p2: ViewGroup?): View {
-        val view: View = View.inflate(context, R.layout.offer_list_listview, null)
+        val view: View = View.inflate(context, R.layout.cto_offer_list_listview, null)
         val row = RowHolder(view)
 
-        row.title.text = list[p0].name
+        row.title.text = list[p0].carModel
+        row.author.text = list[p0].author
         row.daysTerm.text = list[p0].daysTerm.toString()
-        row.moneyBudget.text = list[p0].moneyBudget.toString()
 
         view.tag = row
 
@@ -34,6 +34,6 @@ class OfferListFragmentListViewAdapter(data: List<Offer>, inflater: Context) : B
         val logo = view.findViewById<ImageView>(R.id.ctoOfferLogo);
         val title = view.findViewById<TextView>(R.id.ctoOfferTitle);
         val daysTerm = view.findViewById<TextView>(R.id.ctoDaysTerm);
-        val moneyBudget = view.findViewById<TextView>(R.id.moneyBudget);
+        val author = view.findViewById<TextView>(R.id.ctoAuthorName);
     }
 }

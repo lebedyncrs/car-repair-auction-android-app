@@ -14,7 +14,6 @@
         android:roundIcon="@mipmap/android_app_icon_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".activities.MainActivity"
             android:label="@string/app_name"
@@ -26,8 +25,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.ApplicationActivity" />
-        <activity android:name=".activities.RegisterActivity"></activity>
+        <activity android:name=".activities.RegisterActivity" />
     </application>
-
 
 </manifest>

@@ -9,6 +9,16 @@
         <item>Warszawa</item>
     </string-array>
 
+    <string-array name="fuelTypeList">
+        <item>Benzyna</item>
+        <item>Nie benzyna</item>
+    </string-array>
+
+    <string-array name="carBodyTypeList">
+        <item>Sedan</item>
+        <item>Nie sedan</item>
+    </string-array>
+
     <string-array name="carList">
         <item>Audi A5</item>
         <item>BMW X6</item>
@@ -26,7 +36,7 @@
     <string name="title_activity_login">Sign in</string>
 
     <string name="szukasz">Szukasz</string>
-    <string name="pomocy_czy_klienty">Pomocy czy Klienty?</string>
+    <string name="pomocy_czy_klienty">Pomocy czy Klienta?</string>
     <string name="email">Email</string>
     <string name="has_o">Hasło</string>
     <string name="zaloguj_si">Zaloguj się</string>

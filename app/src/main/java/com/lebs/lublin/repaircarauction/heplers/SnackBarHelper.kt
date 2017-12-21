@@ -11,7 +11,7 @@ class SnackBarHelper {
         fun showError(message: String, view: View, activity: AppCompatActivity) {
             val snackBar = Snackbar.make(view, message, Snackbar.LENGTH_LONG)
             val textView = snackBar.view.findViewById<TextView>(android.support.design.R.id.snackbar_text)
-            snackBar.view.setBackgroundColor(activity.resources.getColor(R.color.colorError))
+//            snackBar.view.setBackgroundColor(activity.resources.getColor(R.color.colorError))
             textView.textAlignment = View.TEXT_ALIGNMENT_CENTER
             snackBar.show()
         }

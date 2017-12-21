@@ -11,9 +11,10 @@ class Offer : Serializable {
     val carModel: String
     val daysTerm: Int
     val moneyBudget: Int
+    val author: String
 
 
-    constructor(id: Int, name: String, description: String, isTowTruckNeeded: Boolean, location: String, carModel: String, daysTerm: Int, moneyBudget: Int) {
+    constructor(id: Int, name: String, description: String, isTowTruckNeeded: Boolean, location: String, carModel: String, daysTerm: Int, moneyBudget: Int, author: String) {
         this.id = id
         this.name = name
         this.description = description
@@ -22,5 +23,6 @@ class Offer : Serializable {
         this.carModel = carModel
         this.daysTerm = daysTerm
         this.moneyBudget = moneyBudget
+        this.author = author
     }
 }
