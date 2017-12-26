@@ -101,9 +101,9 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
     private fun initializeMenu() {
         val user: User = intent.getParcelableExtra("user")
         if (user.isDriver()) {
-            nav_view.menu.setGroupVisible(R.id.ctoMenu, true)
-        } else {
             nav_view.menu.setGroupVisible(R.id.driverMenu, true)
+        } else {
+            nav_view.menu.setGroupVisible(R.id.ctoMenu, true)
         }
 
         nav_view.invalidate()

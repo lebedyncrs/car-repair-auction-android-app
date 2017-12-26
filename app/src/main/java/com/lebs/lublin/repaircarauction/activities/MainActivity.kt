@@ -8,6 +8,14 @@ import com.lebs.lublin.repaircarauction.R
 import com.lebs.lublin.repaircarauction.heplers.SnackBarHelper
 import com.lebs.lublin.repaircarauction.models.User
 import kotlinx.android.synthetic.main.activity_login.*
+import com.turbomanage.httpclient.HttpResponse
+import org.apache.http.params.HttpConnectionParams.setConnectionTimeout
+import com.turbomanage.httpclient.ParameterMap
+import com.turbomanage.httpclient.BasicHttpClient
+import com.turbomanage.httpclient.AsyncCallback
+import com.turbomanage.httpclient.android.AndroidHttpClient
+import android.os.StrictMode
+import com.lebs.lublin.repaircarauction.rest.RestApiClient
 
 
 class MainActivity : AppCompatActivity() {
@@ -15,6 +23,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
+        StrictMode.setThreadPolicy(policy)
 
         singUp.setOnClickListener(View.OnClickListener {
             val intent = Intent(this, RegisterActivity::class.java)

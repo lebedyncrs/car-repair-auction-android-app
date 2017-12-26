@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.lebs.lublin.repaircarauction.R
 import com.lebs.lublin.repaircarauction.activities.forms.RegistrationForm
 import com.lebs.lublin.repaircarauction.models.User
+import com.lebs.lublin.repaircarauction.rest.RestApiClient
 import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : AppCompatActivity() {
@@ -23,6 +24,13 @@ class RegisterActivity : AppCompatActivity() {
                     roleSpinner.selectedItem.toString()
             )
             if (form.validate()) {
+                val client = RestApiClient()
+                val params = client.http.newParams()
+                        .add("username",user.email)
+                        .add("password",user.password)
+                        .add("role",user.role)
+                        .add("location",user.location)
+                val res = client.post("auth/sign-up",params)
                 val inf = Intent(this, ApplicationActivity::class.java)
                 inf.putExtra("user", user)
                 startActivity(inf)

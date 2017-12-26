@@ -45,7 +45,6 @@ class User() : Parcelable {
     }
 
     fun isDriver(): Boolean {
-
         println(this.role.equals("Kierowca"))
         return this.role.equals("Kierowca")
     }

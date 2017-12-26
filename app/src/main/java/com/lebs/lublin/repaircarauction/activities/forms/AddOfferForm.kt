@@ -29,11 +29,6 @@ class AddOfferForm(activity: ApplicationActivity) {
             success = false
         }
 
-        if (addOfferTowTruck.text.toString().isEmpty()) {
-            message += "addOfferTowTruck pusty. "
-            success = false
-        }
-
         if (addOfferDescription.text.toString().isEmpty()) {
             message += "addOfferDescription pusty"
             success = false
