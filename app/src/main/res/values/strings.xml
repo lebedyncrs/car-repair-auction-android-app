@@ -4,6 +4,11 @@
         <item>Warsztatem Samochodowym</item>
     </string-array>
 
+    <string-array name="roleListKeys">
+        <item>driver</item>
+        <item>cto</item>
+    </string-array>
+
     <string-array name="cityList">
         <item>Lublin</item>
         <item>Warszawa</item>

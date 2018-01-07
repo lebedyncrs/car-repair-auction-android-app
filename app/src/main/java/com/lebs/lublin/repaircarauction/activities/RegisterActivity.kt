@@ -21,16 +21,16 @@ class RegisterActivity : AppCompatActivity() {
                     email.text.toString(),
                     passwordSingUp.text.toString(),
                     leavingIn.text.toString(),
-                    roleSpinner.selectedItem.toString()
+                    resources.getStringArray(R.array.roleListKeys)[roleSpinner.selectedItemPosition]
             )
             if (form.validate()) {
                 val client = RestApiClient()
                 val params = client.http.newParams()
-                        .add("username",user.email)
-                        .add("password",user.password)
-                        .add("role",user.role)
-                        .add("location",user.location)
-                val res = client.post("auth/sign-up",params)
+                        .add("email", user.email)
+                        .add("password", user.password)
+                        .add("role", user.role)
+                        .add("location", user.location)
+                val res = client.post("auth/sign-up", params)
                 val inf = Intent(this, ApplicationActivity::class.java)
                 inf.putExtra("user", user)
                 startActivity(inf)

@@ -21,10 +21,12 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         setSupportActionBar(toolbar)
 
         val user: User = intent.getParcelableExtra("user")
+        val authTOken: String = intent.getStringExtra("authToken")
+
         if (user.isDriver()) {
-            changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle)
-        } else {
             changeFragment(OfferListFragment(), OfferListFragment.actionBarTitle)
+        } else {
+            changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle)
         }
 
         fab.setOnClickListener {
