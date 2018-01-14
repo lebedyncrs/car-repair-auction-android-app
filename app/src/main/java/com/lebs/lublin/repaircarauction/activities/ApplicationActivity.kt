@@ -80,9 +80,9 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
             R.id.addDriverCar -> {
                 changeFragment(AddCarFragment(), AddCarFragment.actionBarTitle)
             }
-            R.id.driverCars -> {
-                changeFragment(MyCarFragment(), MyCarFragment.actionBarTitle)
-            }
+//            R.id.driverCars -> {
+//                changeFragment(MyCarFragment(), MyCarFragment.actionBarTitle)
+//            }
             R.id.ctoAuction -> {
                 changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle, bundle)
             }

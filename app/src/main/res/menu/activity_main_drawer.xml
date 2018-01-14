@@ -8,15 +8,6 @@
         android:checkableBehavior="single"
         android:visible="false">
         <item
-            android:id="@+id/driveAccount"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Moje konto" />
-        <item
-            android:id="@+id/driverCars"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Mój Samocjód"
-            android:visible="false" />
-        <item
             android:id="@+id/addDriverCar"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Dodać Samocjód" />
@@ -34,14 +25,6 @@
         android:id="@+id/ctoMenu"
         android:checkableBehavior="single"
         android:visible="false">
-        <item
-            android:id="@+id/ctoAuctionWin"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Wygrane Aukcje" />
-        <item
-            android:id="@+id/ctoAccount"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Mój warsztat" />
         <item
             android:id="@+id/ctoAuction"
             android:icon="@drawable/ic_menu_manage"

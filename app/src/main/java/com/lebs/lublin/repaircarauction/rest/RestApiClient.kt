@@ -6,7 +6,7 @@ import com.turbomanage.httpclient.ParameterMap
 
 class RestApiClient {
 
-    val http = BasicHttpClient("http://10.0.2.2/android-app/public/api/")
+    val http = BasicHttpClient("http://ec2-54-91-2-36.compute-1.amazonaws.com/api/")
 
     fun get(path: String, params: ParameterMap?): HttpResponse? {
         return http.get(path, params)
