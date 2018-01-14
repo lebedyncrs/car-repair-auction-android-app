@@ -59,9 +59,10 @@ class MainActivity : AppCompatActivity() {
     private fun goToApplicationActivity() {
         val intent = Intent(this, ApplicationActivity::class.java)
         intent.putExtra("user", User(
+                Integer.parseInt(loginResponse?.get("user")?.get("id").toString()),
                 loginResponse?.get("user")?.get("email").toString(),
                 "1234", loginResponse?.get("user")?.get("location").toString(),
-                loginResponse?.get("user")?.get("role").toString())
+                loginResponse?.get("user")?.get("role")!!.textValue())
         )
         intent.putExtra("authToken", loginResponse?.get("token").toString())
         startActivity(intent)

@@ -18,6 +18,7 @@ class RegisterActivity : AppCompatActivity() {
         var form = RegistrationForm(this)
         singUpButton.setOnClickListener {
             val user = User(
+                    0,
                     email.text.toString(),
                     passwordSingUp.text.toString(),
                     leavingIn.text.toString(),

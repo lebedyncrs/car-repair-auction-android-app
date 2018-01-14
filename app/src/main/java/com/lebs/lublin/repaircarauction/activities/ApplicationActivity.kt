@@ -1,6 +1,7 @@
 package com.lebs.lublin.repaircarauction.activities
 
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
 import android.support.v4.view.GravityCompat
@@ -15,22 +16,24 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 
 class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    var user: User? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        val user: User = intent.getParcelableExtra("user")
-        val authTOken: String = intent.getStringExtra("authToken")
-
-        if (user.isDriver()) {
-            changeFragment(OfferListFragment(), OfferListFragment.actionBarTitle)
+        this.user = intent.getParcelableExtra("user")
+        val bundle = Bundle()
+        bundle.putInt("userId", this!!.user!!.id)
+        if (this!!.user!!.isDriver()) {
+            changeFragment(OfferListFragment(), OfferListFragment.actionBarTitle, bundle)
         } else {
-            changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle)
+            changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle, bundle)
         }
 
         fab.setOnClickListener {
-            changeFragment(AddOffer(), AddOffer.actionBarTitle)
+            changeFragment(AddOffer(), AddOffer.actionBarTitle, bundle)
         }
 
         val toggle = ActionBarDrawerToggle(
@@ -68,10 +71,11 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
 //    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        // Handle navigation view item clicks here.
+        val bundle = Bundle()
+        bundle.putInt("userId", this!!.user!!.id)
         when (item.itemId) {
             R.id.driverAuction -> {
-                changeFragment(OfferListFragment(), OfferListFragment.actionBarTitle)
+                changeFragment(OfferListFragment(), OfferListFragment.actionBarTitle, bundle)
             }
             R.id.addDriverCar -> {
                 changeFragment(AddCarFragment(), AddCarFragment.actionBarTitle)
@@ -80,7 +84,11 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
                 changeFragment(MyCarFragment(), MyCarFragment.actionBarTitle)
             }
             R.id.ctoAuction -> {
-                changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle)
+                changeFragment(CtoOfferListFragment(), CtoOfferListFragment.actionBarTitle, bundle)
+            }
+            R.id.driverLogOut -> {
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent)
             }
         }
 
@@ -88,7 +96,10 @@ class ApplicationActivity : AppCompatActivity(), NavigationView.OnNavigationItem
         return true
     }
 
-    fun changeFragment(fragment: Fragment, actionBarTitle: String) {
+    fun changeFragment(fragment: Fragment, actionBarTitle: String, bundle: Bundle? = null) {
+        if (bundle != null) {
+            fragment.arguments = bundle
+        }
         var transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.main_content, fragment).commit();
         supportActionBar?.title = actionBarTitle

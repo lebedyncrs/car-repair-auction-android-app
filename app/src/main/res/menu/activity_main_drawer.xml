@@ -25,7 +25,7 @@
             android:icon="@drawable/ic_menu_manage"
             android:title="Aukcje" />
         <item
-            android:id="@+id/DriverLogOut"
+            android:id="@+id/driverLogOut"
             android:icon="@drawable/ic_menu_manage"
             android:title="Wyloguj Się" />
     </group>
