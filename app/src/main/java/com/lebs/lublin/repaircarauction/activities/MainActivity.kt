@@ -42,15 +42,14 @@ class MainActivity : AppCompatActivity() {
     private fun validCredentials(): Boolean {
         val client = RestApiClient()
         val params = client.http.newParams()
-//                .add("email", usernameLogin.text.toString())
-//                .add("password", passwordLogIn.text.toString())
-                .add("email", "final@fin.com")
-                .add("password", "qwerqwer")
+                .add("email", usernameLogin.text.toString())
+                .add("password", passwordLogIn.text.toString())
+//                .add("email", "final@fin.com")
+//                .add("password", "qwerqwer")
         val res = client.post("auth/sign-in", params)
-        val mapper = ObjectMapper()
-        val tree = mapper.readTree(res?.bodyAsString)
-
         if (res?.status == 200) {
+            val mapper = ObjectMapper()
+            val tree = mapper.readTree(res?.bodyAsString)
             loginResponse = tree
         }
         return res?.status == 200;

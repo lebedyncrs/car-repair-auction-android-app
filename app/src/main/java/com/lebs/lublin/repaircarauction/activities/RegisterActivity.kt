@@ -3,6 +3,7 @@ package com.lebs.lublin.repaircarauction.activities
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.fasterxml.jackson.databind.ObjectMapper
 import com.lebs.lublin.repaircarauction.R
 import com.lebs.lublin.repaircarauction.activities.forms.RegistrationForm
 import com.lebs.lublin.repaircarauction.models.User
@@ -32,9 +33,15 @@ class RegisterActivity : AppCompatActivity() {
                         .add("role", user.role)
                         .add("location", user.location)
                 val res = client.post("auth/sign-up", params)
-                val inf = Intent(this, ApplicationActivity::class.java)
-                inf.putExtra("user", user)
-                startActivity(inf)
+                if (res?.status == 200) {
+                    val mapper = ObjectMapper()
+                    val tree = mapper.readTree(res?.bodyAsString)
+                    user.id = Integer.parseInt(tree?.get("id").toString())
+                    val inf = Intent(this, ApplicationActivity::class.java)
+                    inf.putExtra("user", user)
+                    startActivity(inf)
+                }
+
             }
         }
     }

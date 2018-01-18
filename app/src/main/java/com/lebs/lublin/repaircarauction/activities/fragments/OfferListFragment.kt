@@ -27,7 +27,8 @@ class OfferListFragment : Fragment() {
 
         var offers = arrayListOf<Offer>()
         for (item in tree) {
-            offers.add(Offer(
+
+            var test = Offer(
                     item["id"].asInt(),
                     item["name"].asText(),
                     item["description"].asText(),
@@ -37,7 +38,9 @@ class OfferListFragment : Fragment() {
                     item["days_term"].asInt(),
                     item["money_budget"].asInt(),
                     "Piotr"
-            ))
+            );
+            println(test)
+            offers.add(test)
         }
 
         val adapter = OfferListFragmentListViewAdapter(offers, activity)

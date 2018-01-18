@@ -22,7 +22,6 @@ class AddOffer() : Fragment() {
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val view = inflater!!.inflate(R.layout.fragment_add_offer, container, false)
-
         view.addOfferButton.setOnClickListener {
             val form = AddOfferForm(activity as ApplicationActivity)
             if (form.validate()) {
@@ -39,13 +38,25 @@ class AddOffer() : Fragment() {
                         .add("description", form.addOfferDescription.text.toString())
                         .add("need_tow_truck", need_tow_truck)
                         .add("location", form.addOfferCitySpinner.selectedItem.toString())
-                        .add("car_model", addOfferCarSpinner.selectedItem.toString())
+                        .add("car_model", form.addOfferCarSpinner.selectedItem.toString())
                         .add("days_term", form.addOfferDays.text.toString())
                         .add("money_budget", form.moneyBudget.text.toString())
                         .add("author_id", "${user}")
+                println(params.urlEncode())
                 val res = client.post("auction-ads", params)
                 val bundle = Bundle()
-                bundle.putSerializable("data", getOffer())
+                bundle.putInt("userId", user)
+                bundle.putSerializable("data", Offer(
+                        1,
+                        form.addOfferName.text.toString(),
+                        form.addOfferDescription.text.toString(),
+                        form.addOfferTowTruck.isChecked(),
+                        form.addOfferCitySpinner.selectedItem.toString(),
+                        form.addOfferCarSpinner.selectedItem.toString(),
+                        Integer.parseInt(form.addOfferDays.text.toString()),
+                        Integer.parseInt(form.moneyBudget.text.toString()),
+                        "Janusz"
+                ))
                 val fragment = OfferListFragment()
                 fragment.arguments = bundle
                 (activity as ApplicationActivity).changeFragment(fragment, OfferListFragment.actionBarTitle)
